@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+I learn how to build out this project from this udemy course https://www.udemy.com/course/react-hooks-projects-course/ by Bit Punch
+
 ## Available Scripts
 
 In the project directory, you can run:

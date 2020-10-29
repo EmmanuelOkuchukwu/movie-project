@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { SearchContext } from "../Contexts";
 import './style.css';
+import SearchList from "./SearchList";
 
 const SearchBar = () => {
     const { title, handleSearchChange } = useContext(SearchContext);
@@ -11,6 +12,7 @@ const SearchBar = () => {
         value={title}
         onChange={e => handleSearchChange(e.target.value)}
     />
+    {title!== '' && <SearchList/>}
     </div>
 }
 export default SearchBar;
