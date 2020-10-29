@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import SearchBar from "./Search";
+import { SearchContext } from "./Contexts";
 import './App.css';
-import React from "react";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+  const [results, setResults] = useState([]);
+  async function handleSearchChange(inputValue) {
+      setSearchValue(inputValue);
+      const API_KEY = process.env.REACT_APP_API_KEY;
+      const response = await fetch(
+          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputValue}`
+      );
+      const data = await response.json();
+      console.log(data)
+      setResults(data.Search);
+  }
+
+  const SearchContextValue = {
+      handleSearchChange,
+      title: searchValue
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SearchContext.Provider value={SearchContextValue}>
+            <SearchBar />
+        </SearchContext.Provider>
     </div>
   );
 }
