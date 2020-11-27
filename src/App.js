@@ -17,9 +17,10 @@ function App() {
       console.log(data)
       setResults(data.Search || []);
   }
+
   function handleMovieSelected(movieSelected) {
-      console.log("movie Selected", movieSelected)
-      setMovieSelected(movieSelected)
+      console.log("movie Selected", movieSelected);
+      setMovieSelected(movieSelected);
   }
 
   const SearchContextValue = {
